@@ -1,0 +1,31 @@
+{
+  "name": "hapi-graceful-pm2",
+  "version": "1.0.0",
+  "description": "hapi plugin to handle graceful pm2 reloads",
+  "main": "index.js",
+  "scripts": {
+    "test": "lab"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roylines/hapi-graceful-pm2.git"
+  },
+  "keywords": [
+    "hapi",
+    "pm2",
+    "gracefulReload",
+    "graceful",
+    "shutdown",
+    "restart",
+    "zero downtime"
+  ],
+  "author": "Roy Lines <roy@roylines.co.uk> (http://roylines.co.uk)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roylines/hapi-graceful-pm2/issues"
+  },
+  "homepage": "https://github.com/roylines/hapi-graceful-pm2#readme",
+  "devDependencies": {
+    "lab": "*"
+  }
+}
