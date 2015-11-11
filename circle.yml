@@ -1,3 +1,9 @@
 machine:
   node:
     version: 4.0
+
+deployment:
+  production:
+    branch: master
+      commands:
+        - npm run coverage

@@ -4,7 +4,8 @@
   "description": "hapi plugin to handle graceful pm2 reloads",
   "main": "index.js",
   "scripts": {
-    "test": "lab -c -t 100"
+    "test": "lab -c -t 100",
+    "coverage": "lab -t 100 -r lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -26,8 +27,9 @@
   },
   "homepage": "https://github.com/roylines/hapi-graceful-pm2#readme",
   "devDependencies": {
-    "chai": "^3.4.1",
+    "chai": "*",
+    "coveralls": "*",
     "lab": "*",
-    "sinon": "^1.17.2"
+    "sinon": "*"
   }
 }
