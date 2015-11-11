@@ -5,5 +5,5 @@ machine:
 deployment:
   production:
     branch: master
-      commands:
-        - npm run coverage
+    commands:
+      - npm run coverage
