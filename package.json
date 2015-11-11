@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/roylines/hapi-graceful-pm2#readme",
   "devDependencies": {
+    "chai": "^3.4.1",
     "lab": "*"
   }
 }

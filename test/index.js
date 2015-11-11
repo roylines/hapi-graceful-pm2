@@ -1,9 +1,15 @@
-var Lab = require('lab');
+// jshint esnext:true,node:true
+"use strict";
 
-var lab = exports.lab = Lab.script();
+const Lab = require("lab");
+const lab = exports.lab = Lab.script();
+const plugin = require('../index.js');
+const should = require('chai').should();
 
-lab.experiment('hapi-graceful-pm2', function () {
-  lab.test('should', function (done) {
-    done();
+lab.experiment("hapi-graceful-pm2", () => {
+  lab.test("should have correct attributes", (done) => {
+    let pkg = require('../package.json');
+    plugin.register.attributes.pkg.should.deep.equal(pkg);
+    return done();
   });
 });
