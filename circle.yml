@@ -6,4 +6,5 @@ deployment:
   production:
     branch: master
     commands:
-      - npm run coverage
+      - npm run coveralls
+      - npm version "1.0.$CIRCLE_BUILD_NUM" --no-git-tag-version
