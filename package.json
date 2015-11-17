@@ -7,6 +7,9 @@
     "test": "lab -c -t 100",
     "coverage": "lab -t 100 -r lcov | coveralls"
   },
+  "git-pre-hooks": {
+    "pre-push": "npm test"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/roylines/hapi-graceful-pm2.git"
@@ -29,6 +32,7 @@
   "devDependencies": {
     "chai": "*",
     "coveralls": "*",
+    "git-pre-hooks": "*",
     "lab": "*",
     "sinon": "*"
   }
