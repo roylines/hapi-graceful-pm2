@@ -1,6 +1,7 @@
 # hapi-graceful-pm2
 [![Circle CI](https://circleci.com/gh/roylines/hapi-graceful-pm2.svg?style=svg)](https://circleci.com/gh/roylines/hapi-graceful-pm2)
 [![Coverage Status](https://coveralls.io/repos/roylines/hapi-graceful-pm2/badge.svg?branch=master&service=github)](https://coveralls.io/github/roylines/hapi-graceful-pm2?branch=master)
+[![npm version](https://badge.fury.io/js/hapi-graceful-pm2.svg)](https://badge.fury.io/js/hapi-graceful-pm2)
 
 This is a [hapi plugin](http://hapijs.com/tutorials/plugins) to handle true zero downtime reloads when issuing 
 a [pm2 gracefulReload](https://keymetrics.io/2015/03/26/pm2-clustering-made-easy) command.
