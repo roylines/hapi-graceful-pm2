@@ -1,6 +1,6 @@
 {
   "name": "hapi-graceful-pm2",
-  "version": "1.0.0",
+  "version": "1.0.13",
   "description": "hapi plugin to handle graceful pm2 reloads",
   "main": "index.js",
   "scripts": {
