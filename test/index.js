@@ -15,8 +15,7 @@ lab.experiment("hapi-graceful-pm2", () => {
   lab.beforeEach((done) => {
     sinon.stub(process, 'on').returns();
     sinon.stub(process, 'exit');
-    server.root = {};
-    server.root.stop = sinon.stub();
+    server.stop = sinon.stub();
     server.log = sinon.stub();
 
     return plugin.register(server, options, done);
@@ -41,11 +40,11 @@ lab.experiment("hapi-graceful-pm2", () => {
 
   lab.test("should stop server if shutdown", (done) => {
     server.log.returns();
-    server.root.stop.yields();
+    server.stop.yields();
     process.exit.restore();
     sinon.stub(process, 'exit', function(code) {
       code.should.equal(0);
-      server.root.stop.calledOnce.should.be.true;
+      server.stop.calledOnce.should.be.true;
       return done();
     });
     
