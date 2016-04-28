@@ -15,7 +15,9 @@ lab.experiment("hapi-graceful-pm2", () => {
   lab.beforeEach((done) => {
     sinon.stub(process, 'on').returns();
     sinon.stub(process, 'exit');
-    server.stop = sinon.stub();
+    server.root = {
+      stop: sinon.stub()
+    };
     server.log = sinon.stub();
 
     return plugin.register(server, options, done);
@@ -34,17 +36,17 @@ lab.experiment("hapi-graceful-pm2", () => {
   });
 
   lab.test("should bind to correct process method", (done) => {
-    process.on.args[0][0].should.equal('message');
+    process.on.args[0][0].should.equal('SIGINT');
     return done();
   });
 
   lab.test("should stop server if shutdown", (done) => {
     server.log.returns();
-    server.stop.yields();
+    server.root.stop.yields();
     process.exit.restore();
     sinon.stub(process, 'exit', function(code) {
       code.should.equal(0);
-      server.stop.calledOnce.should.be.true;
+      server.root.stop.calledOnce.should.be.true;
       return done();
     });
     
