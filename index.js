@@ -1,15 +1,15 @@
-exports.register = function(server, options, done) {
-  process.on('SIGINT', function() {
-    server.log(['info', 'pm2', 'shutdown'], 'stopping hapi...');
-    server.root.stop(options, function() {
-      server.log(['info', 'pm2', 'shutdown'], 'hapi stopped');
-      return process.exit(0);
-    });
-  });
+const register = (server, options) => {
+    process.on('SIGINT', () => {
+        server.log(['info', 'pm2', 'shutdown'], 'stopping hapi...');
+        server.stop(options, () => {
+            server.log(['info', 'pm2', 'shutdown'], 'hapi stopped');
 
-  return done();
+            return process.exit(0);
+        });
+    });
 };
 
-exports.register.attributes = {
-  pkg: require('./package.json')
+exports.plugin = {
+    register,
+    pkg: require('./package.json')
 };
