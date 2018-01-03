@@ -1,11 +1,11 @@
 const register = (server, options) => {
-    process.on('SIGINT', async () => {
+    process.on('SIGINT', () => {
         server.log(['info', 'pm2', 'shutdown'], 'stopping hapi...');
 
-        await server.stop(options);
-
-        server.log(['info', 'pm2', 'shutdown'], 'hapi stopped');
-        return process.exit(0);
+        server.stop(options).then(() => {
+            server.log(['info', 'pm2', 'shutdown'], 'hapi stopped');
+            return process.exit(0);
+        });
     });
 };
 
