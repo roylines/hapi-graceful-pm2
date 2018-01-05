@@ -39,7 +39,7 @@ lab.experiment("hapi-graceful-pm2", () => {
 
   lab.test("should stop server if shutdown", () => {
     server.log.returns();
-    server.stop.returns();
+    server.stop.returns(Promise.resolve());
     process.exit.restore();
     sinon.stub(process, 'exit').callsFake(code => {
         code.should.equal(0);
