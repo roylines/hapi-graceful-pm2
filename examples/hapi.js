@@ -1,30 +1,30 @@
 const Hapi = require('hapi');
 
-const server = new Hapi.Server({
-    port: 3000
-});
+const server = new Hapi.Server({ port: 3000 });
 
-server.register({
-    register: require('../index.js'),
-    options: {
-        timeout: 4000
-    }
-}).then((err) => {
-    console.log('registered', err);
-});
+const initialize = async (server) => {
+    await server.register({
+        plugin: require('../index.js'),
+        options: {
+            timeout: 4000
+        }
+    });
 
-server.route({
-  method: 'GET',
-  path: '/',
-  handler(request, h) {
-      setTimeout(() => {
-        return 'Hello, world!';
-      }, 2000);
-  }
-});
+    server.route({
+      method: 'GET',
+      path: '/',
+      handler(request, h) {
+          return 'Hello, world!';
+      }
+    });
 
-server.start().then(() => {
-    console.log('Server running at:', server.info.uri);
-}).catch((err) => {
-    throw err;
-});
+    await server.start();
+
+    return server;
+}
+
+initialize(server).then(server => {
+console.log(`Server started at ${server.info.uri}`);
+}).catch(err => {
+throw err;
+})
