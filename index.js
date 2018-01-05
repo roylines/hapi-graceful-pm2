@@ -8,7 +8,7 @@ const register = (server, options) => {
   });
 };
 
-exports.plugin = {
+exports.default = {
   register,
   pkg: require('./package.json')
 };
