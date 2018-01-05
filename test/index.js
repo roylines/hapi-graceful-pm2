@@ -3,7 +3,7 @@
 
 const Lab = require("lab");
 const lab = exports.lab = Lab.script();
-const plugin = require('../index.js').plugin;
+const plugin = require('../index.js').default;
 const should = require('chai').should();
 const sinon = require('sinon');
 
@@ -39,9 +39,9 @@ lab.experiment("hapi-graceful-pm2", () => {
 
   lab.test("should stop server if shutdown", () => {
     server.log.returns();
-    server.stop.yields();
+    server.stop.returns();
     process.exit.restore();
-    sinon.stub(process, 'exit').callsFake((code) => {
+    sinon.stub(process, 'exit').callsFake(code => {
         code.should.equal(0);
         server.stop.calledOnce.should.be.true;
     });
