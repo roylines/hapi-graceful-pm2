@@ -1,15 +1,14 @@
-exports.register = function(server, options, done) {
-  process.on('SIGINT', function() {
+const register = (server, options) => {
+  process.on('SIGINT', async () => {
     server.log(['info', 'pm2', 'shutdown'], 'stopping hapi...');
-    server.root.stop(options, function() {
-      server.log(['info', 'pm2', 'shutdown'], 'hapi stopped');
-      return process.exit(0);
-    });
-  });
+    await server.stop(options);
+    server.log(['info', 'pm2', 'shutdown'], 'hapi stopped');
 
-  return done();
+    return process.exit(0);
+  });
 };
 
-exports.register.attributes = {
+exports.default = {
+  register,
   pkg: require('./package.json')
 };
